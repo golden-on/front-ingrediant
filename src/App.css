@@ -2,5 +2,10 @@
   text-align: center;
   width: 99%;
 }
-
-
+#cards{
+  padding-top: 5%;
+}
+#plusBtn{
+  background-color: rgb(12, 12, 36);
+  border: none;
+}
