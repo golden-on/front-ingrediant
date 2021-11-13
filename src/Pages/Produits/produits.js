@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Card, Button, Input } from 'antd';
 import { useState } from "react";
-import Axios from 'axios';
+import Modifier from "../../Components/modifier";
 
 function Carte({respense}){
     
@@ -9,12 +9,12 @@ function Carte({respense}){
     const [prix, setPrix] = useState("");
     const [id, setId] = useState("");
 
-    const updateProduct = async () =>{
+    /*const updateProduct = async () =>{
         const produit = { price : prix};
         const res = await Axios.put('http://localhost:4000/product/'+id, produit);
         console.log(res);
         console.log(id);
-    };
+    };*/
 
     return(
         <>
@@ -39,11 +39,7 @@ function Carte({respense}){
                                 Supprimer
                             </Button>
                         </Col>
-                        <Col span={8}>
-                            <Button onClick={updateProduct} type="primary" ghost>
-                            Modifier
-                            </Button>
-                        </Col>
+                        <Modifier update = {{ price : prix}} id={id} path={'product/'}/>
                         </Row>
                     </Card>
                 </Col>

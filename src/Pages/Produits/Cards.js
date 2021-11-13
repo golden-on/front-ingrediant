@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Axios from 'axios';
-import Carte from "./Card";
+import Carte from "./produits";
 
 function Cards(){
 

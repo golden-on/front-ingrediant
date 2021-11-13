@@ -1,47 +1,24 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { Drawer, Button, Space, Col, Row, Input, Form} from 'antd';
-import { useState, useEffect} from "react";
 import axios from "axios";
 
-function SidBare({visibilite, closeit}){
 
-    const [visible, setVisible] = useState(false);
+function ProductForm(){
+
     const [title, setTitle] = useState("");
     const [photo, setPhoto] = useState("");
     const [price, setPrice] = useState("");
     const [link, setLink] = useState("");
-
-    const onClose = () => {
-        setVisible(false);
-        closeit(false);
-    };
 
     const addProduct = async () =>{
         const produit = {image : photo, link : link, price : price, title : title };
         await axios.post('http://localhost:4000/product', produit);
     };
 
-    useEffect(()=>{
-        setVisible(visibilite);
-    }, [visibilite]);
-    //console.log(link);
+
     return(
-            <Drawer
-            title="Add new product"
-            width={720}
-            onClose={onClose}
-            visible={visible}
-            bodyStyle={{ paddingBottom: 80 }}
-            extra={
-                <Space>
-                <Button onClick={onClose}>Cancel</Button>
-                <Button onClick={onClose} type="primary">
-                    Submit
-                </Button>
-                </Space>
-            }
-        >
-            <Form layout="vertical" hideRequiredMark>
+<Form layout="vertical" hideRequiredMark>
                 <Row gutter={16}>
                 <Col span={12}>
                     <Form.Item
@@ -94,7 +71,6 @@ function SidBare({visibilite, closeit}){
                     <Col flex="auto"></Col>
                 </Row>
             </Form>
-        </Drawer>
     );
 }
-export default SidBare;
+export default ProductForm;
